@@ -28,13 +28,6 @@ public class CubeGenerator : MonoBehaviour {
     //キューブの生成個数の上限
     private int maxBlockNum = 4;
 
-    //地面の位置
-    private float groundLevel = -3.0f;
-
-    //音を鳴らすためのコンポーネントを入れる
-    //private AudioSource sound;
-
-
     // Use this for initialization
     void Start () {
 
@@ -58,20 +51,7 @@ public class CubeGenerator : MonoBehaviour {
             }
             //次のキューブまでの生成時間を決める
             this.span = this.offsetX + this.spaceX * n;
-        }
-        //地面と接触しているかどうかを調べる
-        bool isGround = (transform.position.y > this.groundLevel) ? false : true;
-
-        //地面とCubeに接触したとき音を鳴らす
-        if (transform.position.y >= groundLevel ) {
-            GetComponent<AudioSource>().volume = 1;
-
-        }
-
-        //ユニティちゃんと接触したときはボリュームを0にする
-        //void OnCollisionEnter2D (Collision other) { }
-        //GetComponent<AudioSource>().volume =0;
-    
+        }    
 
     }
 }

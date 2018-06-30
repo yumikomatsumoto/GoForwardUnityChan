@@ -38,9 +38,6 @@ public class UnitychanController : MonoBehaviour {
         bool isGround = (transform.position.y > this.groundLevel) ? false : true;
         this.animator.SetBool("isGround", isGround);
 
-        //ジャンプの時はボリュームを0にする
-        GetComponent<AudioSource>().volume = (isGround) ? 1 : 0;
-
         //着地状態でクリックされた場合
         if(Input.GetMouseButtonDown(0) && isGround) {
             //上方向の力をかける
