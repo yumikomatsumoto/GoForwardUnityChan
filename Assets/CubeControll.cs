@@ -10,9 +10,6 @@ public class CubeControll : MonoBehaviour {
     //消滅位置
     private float deadLine = -10;
 
-    //地面の位置
-    private float groundLevel = -3.0f;
-
     //音を鳴らすためのコンポーネントを入れる
     private AudioSource sound;
 
@@ -33,21 +30,13 @@ public class CubeControll : MonoBehaviour {
         //画面外に出たら破棄する
         if (transform.position.x < this.deadLine) {
             Destroy(gameObject);
-        }
-
-        //地面に接触していないときはボリュームを0にする
-        GetComponent<AudioSource>().volume = (transform.position.y > groundLevel) ? 1 : 0;
-
-        //地面とCubeに接触したとき音を鳴らす
-        if (transform.position.y<=groundLevel ) {
-            GetComponent<AudioSource>().volume = 1;
-
-        }
-
-        //ユニティちゃんと接触したときはボリュームを0にする
-        //void OnCollisionEnter2D (Collision other) {
-            //GetComponent<AudioSource>().volume = 0;
-        
-
+        }  
     }
+    //ユニティちゃんと接触したときはボリュームを0にする
+    void OnCollisionEnter2D(Collision2D other)    {
+
+     if (other.gameObject.tag == "ground" || other.gameObject.tag == "Cube") {
+     GetComponent<AudioSource>().Play();
+        }
+            }
 }
